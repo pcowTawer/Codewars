@@ -30,11 +30,22 @@ bool in_vowels(const char c)
 char *disemvowel(const char *str)
 {
     int i, count = 0;
-    for (i = 0; str[i]; i++)
+    for (i = 0; str[i] != '\0'; ++i)
         if (in_vowels(str[i]))
             ++count;
-    printf("\n%i", count);
 
+    char* buf = (char*)malloc(sizeof(char) * (i - count) + sizeof(char));
+    int counter = 0;
+    for(i = 0; str[i] != '\0'; ++i)
+    {
+        if (in_vowels(str[i]))
+        {
+            ++counter;
+            continue;
+        }
+        buf[i - counter] = str[i];
+    }
+    buf[i - counter] = str[i];
     return "";
 }
 
