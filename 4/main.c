@@ -11,20 +11,7 @@
 
 int digital_root(int n)
 {
-    int buf = n;
-    int i, sum = 0;
-    do
-    {
-        sum = 0;
-        for (i = 0; buf != 0; ++i)
-        {
-            sum += buf % 10;
-            buf = buf/10;
-        }
-        buf = sum;
-    } while (sum >= 10);
-    
-    return sum;
+    return --n % 9 + 1;
 }
 
 int main()
