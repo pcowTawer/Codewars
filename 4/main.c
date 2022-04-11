@@ -1,6 +1,3 @@
-#include <math.h>
-#include <stdio.h>
-
 // Digital root is the recursive sum of all the digits in a number.
 
 // Given n, take the sum of the digits of n. 
