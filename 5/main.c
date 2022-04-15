@@ -24,18 +24,23 @@
 
 bool validParentheses(const char *str_in) 
 {
-  int i, counter = 0;
+  int i, count_of_not_closed = 0, count_of_opener = 0, count_of_closer = 0;
   for(i = 0; str_in[i] != '\0'; ++i)
   {
-    if (str_in[i] == '(') ++counter;
-    if (str_in[i] == ')') --counter;
+    if (str_in[i] == '(') ++count_of_opener;
+    if (str_in[i] == ')') 
+    {
+        ++count_of_closer;
+        count_of_not_closed = count_of_opener - count_of_closer;
+        if (count_of_not_closed < 0)    return false;
+    }
   }
-  return (bool)!counter;
+  return (bool)(count_of_closer == count_of_opener);
 }
 
 int main()
 {
-    printf("%d", validParentheses(""));
+    printf("%d", validParentheses("(()) ( (()) (()) )(())"));
     
     return 0;
 }
