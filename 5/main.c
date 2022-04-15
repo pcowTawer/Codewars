@@ -38,6 +38,34 @@ bool validParentheses(const char *str_in)
   return (bool)(count_of_closer == count_of_opener);
 }
 
+#include <stdbool.h>
+
+bool validParentheses2(const char* strin)
+{
+    int c = 0;
+    while(*strin) {
+        switch(*strin) {
+            case '(':
+                c++; break;
+            case ')':
+                if (c == 0) return false;
+                c--; break;
+        }
+        strin++;
+    }
+
+    return c == 0;
+}
+
+bool validParentheses3(const char* strin) {
+    int k = 0;
+    for (const char *p = strin; *p && k >= 0; ++p) {
+        k += *p == '(';
+        k -= *p == ')';
+    }
+    return k == 0;
+}
+
 int main()
 {
     printf("%d", validParentheses("(()) ( (()) (()) )(())"));
