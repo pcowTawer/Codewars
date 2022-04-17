@@ -166,8 +166,19 @@ int find_odd1(size_t length, const int array[length])
     return -100000001;
 }
 
+// x xor x = 0 and xor is commutative
+int find_odd2(size_t length, const int array[length])
+{
+  int odd_int = 0;
+
+  for (size_t i = 0; i < length; i++)
+    odd_int ^= array[i];
+
+  return odd_int;
+}
+
 int main()
 {
     int array[] = {28, 28};
-    printf("%d", find_odd1(sizeof(array) / sizeof(array[0]), array));
+    printf("%d", find_odd2(sizeof(array) / sizeof(array[0]), array));
 }
